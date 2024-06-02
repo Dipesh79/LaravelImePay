@@ -1,0 +1,27 @@
+{
+    "name": "dipesh79/laravel-imepay",
+    "description": "Laravel ImePay Payment Gateway",
+    "keywords": ["laravel", "imepay", "payment", "gateway"],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dipesh79\\LaravelImePay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dipesh Khanal",
+            "email": "dipeshkhanal79@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dipesh79\\LaravelImePay\\LaravelImePayServiceProvider"
+            ]
+        }
+    }
+}
