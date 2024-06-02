@@ -134,7 +134,7 @@ class LaravelImepay
      *
      * @return string The generated checkout URL.
      */
-    public function generateCheckOutUrl(string $token, string $refId, float $amount): string
+    public function generateCheckoutUrl(string $token, string $refId, float $amount): string
     {
         if (strtolower($this->environment) == 'live') {
             $url = '';
