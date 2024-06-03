@@ -45,7 +45,7 @@ class LaravelImepay
         $this->method = config('imepay.callbackMethod');
         $this->checkEnvData();
         if (strtolower($this->environment) == 'live') {
-            $this->baseUrl = '';
+            $this->baseUrl = 'https://payment.imepay.com.np:7979/api/';
         } else {
             $this->baseUrl = 'https://stg.imepay.com.np:7979/api/';
         }
@@ -137,7 +137,7 @@ class LaravelImepay
     public function generateCheckoutUrl(string $token, string $refId, float $amount): string
     {
         if (strtolower($this->environment) == 'live') {
-            $url = '';
+            $url = 'https://payment.imepay.com.np:7979/WebCheckout/Checkout';
         } else {
             $url = 'https://stg.imepay.com.np:7979/WebCheckout/Checkout';
         }
