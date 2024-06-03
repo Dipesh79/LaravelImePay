@@ -28,7 +28,7 @@ IMEPAY_MODULE="API"
 IMEPAY_ENV="Sandbox" #Sandbox or Production
 IMEPAY_CALLBACK_URL="http://localhost:8000/imepay/callback"
 IMEPAY_CANCEL_URL="http://localhost:8000/imepay/cancel"
-IMEPAY_CALLBACK_METHOD="GET"
+IMEPAY_CALLBACK_METHOD="GET" #GET or POST
 
 ```
 
@@ -49,13 +49,21 @@ use Dipesh79\LaravelImePay\LaravelImepay;
 $imepay = new LaravelImepay();
 
 // generate a token
-$token = $imepay->generateToken($amount, $refId);
+$token = $imepay->generateToken($amount, $refId); // returns 231434534534 (integer)
 
 // generate a checkout URL
-$url = $imepay->generateCheckOutUrl($token, $refId, $amount);
+$url = $imepay->generateCheckOutUrl($token, $refId, $amount); // return url (string)
 
 // handle callback response
-$response = $imepay->callbackResponse($request);
+$response = $imepay->callbackResponse($request); // return array(
+"ResponseCode" => "0"
+  "ResponseDescription" => "Success"
+  "RefId" => "45e07eec-d9f9-4da2-9d6c-5a871d7d4522"
+  "TranAmount" => "10"
+  "Msisdn" => "98********"
+  "TransactionId" => "2024**************"
+  "TokenId" => "2024**************"
+)
 
 // confirm a payment
 $confirmation = $imepay->confirmPayment($refId, $tokenId, $transactionId, $msisdn);
