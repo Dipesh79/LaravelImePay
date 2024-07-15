@@ -101,11 +101,9 @@ class LaravelImepay
      */
     public function generateToken(float $amount, string $refId): string
     {
-        if (strtolower($this->environment) == 'live') {
-            $url = '';
-        } else {
-            $url = $this->baseUrl . 'Web/GetToken';
-        }
+
+        $url = $this->baseUrl . 'Web/GetToken';
+
 
         $response = Http::withHeaders([
             'Authorization' => 'Basic ' . base64_encode($this->apiUser . ':' . $this->apiPassword),
@@ -128,9 +126,9 @@ class LaravelImepay
     /**
      * Generates a checkout URL.
      *
-     * @param string $token  The token for the payment.
-     * @param string $refId  The reference ID for the payment.
-     * @param double $amount  The amount for the payment.
+     * @param string $token The token for the payment.
+     * @param string $refId The reference ID for the payment.
+     * @param double $amount The amount for the payment.
      *
      * @return string The generated checkout URL.
      */
@@ -197,11 +195,7 @@ class LaravelImepay
      */
     public function confirmPayment(string $refId, string $tokenId, string $transactionId, string $msisdn): array
     {
-        if (strtolower($this->environment) == 'live') {
-            $url = '';
-        } else {
-            $url = $this->baseUrl . 'Web/Confirm';
-        }
+        $url = $this->baseUrl . 'Web/Confirm';
 
         $response = Http::withHeaders([
             'Authorization' => 'Basic ' . base64_encode($this->apiUser . ':' . $this->apiPassword),
@@ -230,11 +224,7 @@ class LaravelImepay
      */
     public function recheckPayment(string $refId, string $tokenId): array
     {
-        if (strtolower($this->environment) == 'live') {
-            $url = '';
-        } else {
-            $url = $this->baseUrl . 'Web/Recheck';
-        }
+        $url = $this->baseUrl . 'Web/Recheck';
 
         $response = Http::withHeaders([
             'Authorization' => 'Basic ' . base64_encode($this->apiUser . ':' . $this->apiPassword),
